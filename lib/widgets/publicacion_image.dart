@@ -1,6 +1,7 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-/// Muestra la imagen de red de una publicación.
+/// Muestra la imagen de red de una publicación con caché local.
 /// Si la URL es nula, vacía o falla la carga → placeholder con gradiente
 /// e icono según el tipo. Las publicaciones de fuente MOOC muestran
 /// un badge "MOOC TecNM" en la esquina inferior derecha.
@@ -28,25 +29,22 @@ class PublicacionImage extends StatelessWidget {
     Widget image;
 
     if (validUrl) {
-      image = Image.network(
-        url!,
+      image = CachedNetworkImage(
+        imageUrl: url!,
         height: height,
         width: double.infinity,
         fit: BoxFit.cover,
-        errorBuilder: (_, __, ___) => PublicacionPlaceholder(
+        placeholder: (_, __) => SizedBox(
+          height: height,
+          child: const Center(
+            child: CircularProgressIndicator(strokeWidth: 2),
+          ),
+        ),
+        errorWidget: (_, __, ___) => PublicacionPlaceholder(
           tipo: tipo,
           fuente: fuente,
           height: height,
         ),
-        loadingBuilder: (_, child, progress) {
-          if (progress == null) return child;
-          return SizedBox(
-            height: height,
-            child: const Center(
-              child: CircularProgressIndicator(strokeWidth: 2),
-            ),
-          );
-        },
       );
     } else {
       image = PublicacionPlaceholder(tipo: tipo, fuente: fuente, height: height);
