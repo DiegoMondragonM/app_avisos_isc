@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1049399468064",
+    "project_id": "avisos-isc",
+    "storage_bucket": "avisos-isc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1049399468064:android:5e20080e1c9b9de0529c45",
+        "android_client_info": {
+          "package_name": "com.isc.avisos"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAV6SBNgmT1XnRqgxqVMBjh0hzI6qc8pYk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
