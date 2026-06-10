@@ -69,7 +69,9 @@ class Publicacion {
 
   static DateTime? _parseDate(dynamic value) {
     if (value == null) return null;
-    return DateTime.tryParse(value as String);
+    // La API devuelve fechas en UTC (sufijo 'Z'); convertir a hora local
+    // para que comparaciones y formateo usen la zona del dispositivo.
+    return DateTime.tryParse(value as String)?.toLocal();
   }
 
   bool get isPublicada => estado == 'publicada';

@@ -21,7 +21,7 @@ class Usuario {
         email: json['email'] as String,
         rol: json['rol'] as String,
         semestre: json['semestre'] as int?,
-        creadoEn: DateTime.parse(json['creado_en'] as String),
+        creadoEn: DateTime.parse(json['creado_en'] as String).toLocal(),
       );
 
   Map<String, dynamic> toJson() => {
